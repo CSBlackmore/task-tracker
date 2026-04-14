@@ -1,15 +1,21 @@
 package com.tasktracker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskManager {
-    // Atributo: private List<Task> tasks;
-    // Atributo: private StorageHandler storage; (El encargado de guardar)
+    private List<Task> tasks;
+    private StorageHandler storage;
 
     // Constructor: Carga las tareas existentes usando el storage.
+    public TaskManager(StorageHandler storage) {
+        this.storage = storage;
+        this.tasks = new ArrayList<>();
+    }
 
     public void addTask(String description) {
-        // Crea una nueva Task, le asigna un ID único y la guarda en la lista.
+        // Creates a new tasks with and ID and adds it to the list
+        tasks.add(new Task(tasks.size() + 1, description, "TO-DO"));
     }
 
     public void updateTask(int id, String newDescription) {
